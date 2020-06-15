@@ -21,7 +21,7 @@ public class DroidKanjiEntry extends KanjiEntry implements DroidEntry {
 
     private int kanaColor = -4128832;
 
-    private int definitionColor = -1;
+    private int definitionColor = 0;
 
     private int indexColor = -8032;
 
@@ -71,7 +71,7 @@ public class DroidKanjiEntry extends KanjiEntry implements DroidEntry {
 
     @Override
     public int getBackgroundColor() {
-        return Color.BLACK;
+        return Color.WHITE;
     }
 
     @Override
@@ -83,13 +83,13 @@ public class DroidKanjiEntry extends KanjiEntry implements DroidEntry {
         }
         String heisigNumber = prop.get(heisigTag);
         StringBuilder result = new StringBuilder();
-        result.append(HtmlEntryUtils.wrapColor(kanjiColor, this.getKanji().toString()));
-        result.append(" [").append(HtmlEntryUtils.wrapColor(kanaColor, this.getYomi())).append("]");
+        result.append(HtmlEntryUtils.wrapColor(Color.BLACK, this.getKanji().toString()));
+        result.append(" [").append(HtmlEntryUtils.wrapColor(Color.BLACK, this.getYomi())).append("]");
         if (heisigNumber != null) {
-            result.append(" (" + HtmlEntryUtils.wrapColor(indexColor, heisigNumber) + ")");
+            result.append(" (" + HtmlEntryUtils.wrapColor(Color.BLACK, heisigNumber) + ")");
         }
         result.append("<br/>");
-        result.append(HtmlEntryUtils.wrapColor(this.definitionColor, this.getDefinition()));
+        result.append(HtmlEntryUtils.wrapColor(Color.BLACK, this.getDefinition()));
         return result.toString();
     }
 

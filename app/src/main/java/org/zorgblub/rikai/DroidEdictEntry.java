@@ -14,13 +14,13 @@ import static org.zorgblub.rikai.HtmlEntryUtils.wrapColor;
  */
 public class DroidEdictEntry extends EdictEntry implements DroidEntry {
     // default value are set to the rikaichan style
-    private int kanjiColor = -4724737;
+    private int kanjiColor = -1;
 
-    private int kanaColor = -4128832;
+    private int kanaColor = -1;
 
     private int definitionColor = -1;
 
-    private int reasonColor = -8032;
+    private int reasonColor = -1;
 
 
     public DroidEdictEntry() {
@@ -68,23 +68,23 @@ public class DroidEdictEntry extends EdictEntry implements DroidEntry {
 
     @Override
     public int getBackgroundColor() {
-        return Color.BLACK;
+        return Color.WHITE;
     }
 
     @Override
     public String toStringCompact() {
         StringBuilder result = new StringBuilder(this.getLength());
 
-        result.append(wrapColor(kanjiColor, this.getWord()));
+        result.append(wrapColor(Color.BLACK, this.getWord()));
 
         if (this.getReading().length() != 0) {
-            result.append(" [").append(wrapColor(kanaColor, this.getReading())).append("]");
+            result.append(" [").append(wrapColor(Color.BLACK, this.getReading())).append("]");
         }
         if (this.getReason().length() != 0) {
-            result.append(" (").append(wrapColor(reasonColor, this.getReason())).append(")");
+            result.append(" (").append(wrapColor(Color.BLACK, this.getReason())).append(")");
         }
 
-        result.append("<br/>").append(wrapColor(definitionColor, this.getGloss()));
+        result.append("<br/>").append(wrapColor(Color.BLACK, this.getGloss()));
 
         return result.toString();
     }

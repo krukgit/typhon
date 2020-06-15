@@ -29,32 +29,32 @@ Date: 2013 04 26
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/control_background"
         >
+
         <androidx.viewpager.widget.PagerTabStrip
             android:id="@+id/pager_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:paddingBottom="4dp"
+            android:background="@color/opaque_white"
             android:paddingTop="4dp"
-            android:textColor="#aaffffff"
-            android:background="@color/opaque_black"/>
+            android:paddingBottom="4dp"
+            android:textColor="#000000" />
     </androidx.viewpager.widget.ViewPager>
     <!--  android:fadeScrollbars="false" always shows scrollbar -->
 
-    <Button android:id="@+id/gloss_close"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:visibility="invisible"
-            android:text="@string/close_button"
-            android:textSize="15sp"
-            android:textColor="#aaffffff"
-            android:background="@color/transparent"
-            android:paddingRight="5dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@id/viewpager"
-            />
+    <Button
+        android:id="@+id/gloss_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignRight="@id/viewpager"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent"
+        android:paddingRight="5dp"
+        android:text="@string/close_button"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:visibility="invisible" />
     <Button android:id="@+id/gloss_drag"
             android:layout_width="match_parent"
             android:layout_height="30dp"

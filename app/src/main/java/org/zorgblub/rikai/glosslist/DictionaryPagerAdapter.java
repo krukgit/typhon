@@ -51,11 +51,13 @@ public class DictionaryPagerAdapter extends PagerAdapter {
         public ProgressBar progressBar;
 
         void startProgress(){
-            dictionaryListView.setVisibility(View.GONE);
-            progressBar.setVisibility(View.VISIBLE);
+			// Don't cause extra flashing on e-Ink display
+            // dictionaryListView.setVisibility(View.GONE);
+            // progressBar.setVisibility(View.VISIBLE);
         }
 
         void stopProgress(){
+			// Don't cause extra flashing on e-Ink display
             progressBar.setVisibility(View.GONE);
             dictionaryListView.setVisibility(View.VISIBLE);
         }

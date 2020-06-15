@@ -31,6 +31,6 @@ public class DroidEpwingEntry extends EpwingEntry<Spannable> implements DroidEnt
 
     @Override
     public int getBackgroundColor() {
-        return Color.BLACK;
+        return Color.WHITE;
     }
 }

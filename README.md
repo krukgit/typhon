@@ -13,8 +13,22 @@ Typhon is licensed under the GPL-V3 license.
 
 Benjamin Marlé benjamarle@gmail.com
 
+makuto's fork
+-------------------
+This fork uses the below [dajimenezja fork](https://github.com/dajimenezja/typhon) for its modern Android version and inclusion of JRikai.jar by default.
+
+I then made modifications to make Typhon suitable for e-Ink / e-Paper displays. In my case, it's for an Onyx Boox Nova 2.
+
+I made the following modifications:
+- Got rid of bookshelf image and replaced with black line on white background. Images don't look good in e-Ink, and this one serves little purpose anyways
+- Made definition popup black text on white background (previously, it was hard-coded white/colored text on black)
+- Made definition popup not show loading indicator. This causes unnecessary flashing of the e-ink display, and loading is very fast anyways
+- Changed controls to be inverted from black-on-white to white-on-black, when appropriate
+
 Typhon改
 -------------------
+([dajimenezja fork](https://github.com/dajimenezja/typhon))
+
 Revise code base to androidx api29, fixing some UI bugs (Notably fixes unused space at the bottom of tall displays)
 
 Update anki integration so it doesn't crash on android 26+

@@ -20,10 +20,9 @@
     Date: 2013 04 26
 
     -->
-	<TextView 
-		android:id="@+id/def" 
-		xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:textSize="20sp"
-	    />
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/def"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="#FF0000"
+	android:textSize="20sp" />
