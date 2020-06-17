@@ -51,20 +51,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:background="@color/translucent_black"
+            android:background="@color/opaque_white"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/opaque_white" />/>
+            android:textColor="@color/opaque_black" />/>
 
         <TextView
             android:id="@+id/authorField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/myTitleBarTextView"
-            android:background="@color/translucent_black"
+            android:background="@color/opaque_white"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/opaque_white" />
+            android:textColor="@color/opaque_black" />
 
 
         <TextView
@@ -72,11 +72,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/authorField"
-            android:background="@color/translucent_black"
+            android:background="@color/opaque_white"
             android:text="@string/zero_percent"
 
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/opaque_white" />
+            android:textColor="@color/opaque_black" />
 
         <SeekBar
             android:id="@+id/titleProgress"
@@ -84,7 +84,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/percentageField"
-            android:background="@color/translucent_black"
+            android:background="@color/opaque_white"
             android:paddingLeft="16dp"
             android:paddingRight="16dp" />
     </RelativeLayout>

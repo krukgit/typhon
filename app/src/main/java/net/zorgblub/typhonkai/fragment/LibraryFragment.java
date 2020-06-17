@@ -1025,7 +1025,7 @@ public class LibraryFragment extends Fragment implements ImportCallback {
             image.setImageDrawable(backupCover);
             TextView text = (TextView) result.findViewById(R.id.bookLabel);
             text.setText(object.getTitle());
-            text.setBackgroundResource(R.drawable.alphabet_bar_bg_dark);
+            text.setBackgroundResource(R.drawable.alphabet_bar_bg);
 
             loadCover(image, object, index);
 

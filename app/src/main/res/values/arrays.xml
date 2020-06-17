@@ -33,6 +33,8 @@
     </string-array>
 
     <string-array name="fonts">
+        <item>IPAMincho</item>
+        <item>IPAGothic</item>
         <item>mamelon</item>
         <item>boku2r</item>
         <item>kokoro</item>
@@ -46,6 +48,8 @@
     </string-array>
 
     <string-array name="fontLabels">
+        <item>IPA Mincho</item>
+        <item>IPA Gothic</item>
         <item>Mamelon Maru</item>
         <item>Boku2r Gothic</item>
         <item>Kokoro Mincho</item>

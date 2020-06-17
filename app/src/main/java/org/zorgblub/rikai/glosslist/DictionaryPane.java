@@ -244,7 +244,7 @@ public class DictionaryPane extends DraggablePane implements DictionaryServiceIm
 
     public void showPane() {
         if (!this.isDisplaying() || this.getHeight() < 10) {
-            this.setHeight((int) (bookReader.getHeight() / 2.6));
+            this.setHeight((int) (bookReader.getHeight() / 3.2));
             this.reveal();
         }
     }
