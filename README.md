@@ -14,7 +14,7 @@ Note that Typhon does not require Google Play. I tested this to work on Android 
 Typhon is licensed under the GPL-V3 license.
 
 - Macoy Madson macoy@macoy.me (this fork's author; contact me first)
-- Benjamin Marlé benjamarle@gmail.com (original author; hasn't worked on Typhon in years)
+- Benjamin Marlé benjamarle@gmail.com (original author; hasn't worked on Typhon in years, unfortunately)
 
 makuto's fork
 =================
