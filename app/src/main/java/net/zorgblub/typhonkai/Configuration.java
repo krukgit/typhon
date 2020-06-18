@@ -237,8 +237,8 @@ public class Configuration {
             defaultSerifFont = "serif";
             defaultSansFont = "sans";
         } else {
-            defaultSerifFont = "gen_book_bas";
-            defaultSansFont = "sans";
+            defaultSerifFont = "IPAMincho";
+            defaultSansFont = "IPAMincho";
         }
 
         // On Nook Touch, preset some different defaults on first load
@@ -703,6 +703,21 @@ public class Configuration {
         updateValue(settings, key, value);
     }
 
+	private FontFamily loadFamilyFromAssetsTTF(String key, String baseName) {
+        Typeface basic = Typeface.createFromAsset(context.getAssets(), baseName
+                + ".ttf");
+        Typeface boldFace = basic;
+        Typeface italicFace = basic;
+        Typeface biFace = basic;
+
+        FontFamily fam = new FontFamily(key, basic);
+        fam.setBoldTypeface(boldFace);
+        fam.setItalicTypeface(italicFace);
+        fam.setBoldItalicTypeface(biFace);
+
+        return fam;
+    }
+
     private FontFamily loadFamilyFromAssets(String key, String baseName, boolean skipVariants) {
         Typeface basic = Typeface.createFromAsset(context.getAssets(), baseName
                 + ".otf");
@@ -751,6 +766,12 @@ public class Configuration {
             } else if ("frankruehl".equalsIgnoreCase(fontFace)) {
                 fontCache.put(fontFace,
                         loadFamilyFromAssets(fontFace, "FrankRuehl", false));
+			} else if ("IPAMincho".equalsIgnoreCase(fontFace)) {
+                fontCache.put(fontFace,
+							  loadFamilyFromAssetsTTF(fontFace, "ipaexm"));
+			} else if ("IPAGothic".equalsIgnoreCase(fontFace)) {
+                fontCache.put(fontFace,
+							  loadFamilyFromAssetsTTF(fontFace, "ipaexg"));
             } else {
 
                 Typeface face = Typeface.SANS_SERIF;

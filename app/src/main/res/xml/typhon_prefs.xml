@@ -223,7 +223,7 @@
             android:title="@string/pref_use_publisher_style" />
 
         <ListPreference
-            android:defaultValue="boku2r"
+            android:defaultValue="IPAGothic"
             android:entries="@array/fontLabels"
             android:entryValues="@array/fonts"
             android:key="font_face"
@@ -231,7 +231,7 @@
             android:title="@string/pref_font_face" />
 
         <ListPreference
-            android:defaultValue="kokoro"
+            android:defaultValue="IPAMincho"
             android:entries="@array/fontLabels"
             android:entryValues="@array/fonts"
             android:key="serif_font"
@@ -239,7 +239,7 @@
             android:title="@string/pref_serif_font" />
 
         <ListPreference
-            android:defaultValue="boku2r"
+            android:defaultValue="IPAGothic"
             android:entries="@array/fontLabels"
             android:entryValues="@array/fonts"
             android:key="sans_serif_font"
@@ -254,7 +254,7 @@
             android:title="@string/pref_strip_whitespace" />
 
         <com.hlidskialf.android.preference.SeekBarPreference
-            android:defaultValue="18"
+            android:defaultValue="30"
             android:dialogTitle="@string/pref_itext_size"
             android:key="itext_size"
             android:max="48"
@@ -262,7 +262,7 @@
             android:title="@string/pref_itext_size" />
 
         <com.hlidskialf.android.preference.SeekBarPreference
-            android:defaultValue="30"
+            android:defaultValue="40"
             android:dialogTitle="@string/pref_margin_h"
             android:key="margin_h"
             android:max="150"
@@ -277,7 +277,7 @@
             android:summary="@string/pref_margin_v_summary"
             android:title="@string/pref_margin_v" />
         <com.hlidskialf.android.preference.SeekBarPreference
-            android:defaultValue="0"
+            android:defaultValue="22"
             android:dialogTitle="@string/pref_line_spacing"
             android:key="line_spacing"
             android:max="50"
