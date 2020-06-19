@@ -32,6 +32,10 @@ import org.acra.ACRA;
 // we don't wanna bother him :)
 public class Typhon extends Application {
 
+	public boolean readingTimerRunning = false;
+	public long readingTimerLastTimeStartedMS = 0;
+	public long readingTimerTotalTimeMS = 0;
+
     private static boolean acraInitDone;
 
     private static Typhon instance;

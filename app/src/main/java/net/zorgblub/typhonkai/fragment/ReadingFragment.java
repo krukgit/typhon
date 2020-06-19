@@ -33,6 +33,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.res.AssetFileDescriptor;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -49,6 +50,8 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.PowerManager;
 import android.speech.tts.TextToSpeech;
+
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -139,6 +142,8 @@ import org.zorgblub.rikai.glosslist.DictionaryPane;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -2518,10 +2523,12 @@ public class ReadingFragment extends Fragment implements
         hideTitleBar();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         hideTitleBar();
+		Activity activity = getActivity();
 
         // Handle item selection
         switch (item.getItemId()) {
@@ -2533,6 +2540,30 @@ public class ReadingFragment extends Fragment implements
             case R.id.profile_day:
                 config.setColourProfile(ColourProfile.DAY);
                 this.restartActivity();
+                return true;
+
+			case R.id.reading_timer:
+				if (activity != null) {
+					Typhon application = (Typhon)activity.getApplication();
+					application.readingTimerRunning = !application.readingTimerRunning;
+                    Resources res = getResources();
+					if (application.readingTimerRunning) {
+						application.readingTimerLastTimeStartedMS = System.currentTimeMillis();
+						Duration currentDuration = Duration.of(application.readingTimerTotalTimeMS, ChronoUnit.MILLIS);
+						Toast.makeText(context,
+									   res.getString(R.string.reading_timer_running, currentDuration.toMinutes()),
+									   Toast.LENGTH_LONG)
+							.show();
+					} else {
+						application.readingTimerTotalTimeMS +=
+							System.currentTimeMillis() - application.readingTimerLastTimeStartedMS;
+						Duration currentDuration = Duration.of(application.readingTimerTotalTimeMS, ChronoUnit.MILLIS);
+						Toast.makeText(context,
+									   res.getString(R.string.reading_timer_stopped, currentDuration.toMinutes()),
+									   Toast.LENGTH_LONG)
+							.show();
+					}
+				}
                 return true;
 
             case R.id.manual_sync:
@@ -2558,6 +2589,28 @@ public class ReadingFragment extends Fragment implements
 
             case R.id.text_to_speech:
                 startTextToSpeech();
+                return true;
+
+			case R.id.reading_timer_reset:
+				if (activity != null) {
+					Typhon application = (Typhon)activity.getApplication();
+					if (application.readingTimerRunning) {
+						// Always stop the timer after reset
+						application.readingTimerRunning = false;
+						application.readingTimerTotalTimeMS +=
+							System.currentTimeMillis() - application.readingTimerLastTimeStartedMS;
+					}
+
+                    Resources res = getResources();
+					Duration currentDuration = Duration.of(application.readingTimerTotalTimeMS, ChronoUnit.MILLIS);
+					Toast.makeText(context,
+								   res.getString(R.string.reading_timer_reset, currentDuration.toMinutes()),
+								   Toast.LENGTH_LONG)
+						.show();
+
+					// TODO: Save your total time across many sessions
+					application.readingTimerTotalTimeMS = 0;
+				}
                 return true;
 
             case R.id.about:

@@ -649,4 +649,9 @@
 
     <string name="pref_anki_deck_name_default">Typhon vocabulary</string>
 
+    <string name="reading_timer">Start/stop reading timer</string>
+	<string name="reading_timer_running">Timer started. Reading for %1$d minutes</string>
+	<string name="reading_timer_stopped">Timer stopped. Reading for %1$d minutes</string>
+	<string name="reading_timer_reset_menu">Reset reading timer</string>
+	<string name="reading_timer_reset">Timer reset from %1$d minutes. Timer is stopped</string>
 </resources>
