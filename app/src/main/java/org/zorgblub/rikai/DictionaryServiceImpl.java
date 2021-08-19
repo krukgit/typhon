@@ -73,6 +73,11 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     private long lastUpdate = System.currentTimeMillis();
 
+    private String lastSearchWord = "asdaxcz";
+    private int lastAudioIndex = 0;
+    private int lastAudioTotal = 1;
+    private AccentAudio accentAudio = new AccentAudio();
+
     private static final Logger LOG = LoggerFactory
             .getLogger("DictionaryService");
 
@@ -387,7 +392,6 @@ public class DictionaryServiceImpl implements DictionaryService {
         Dictionary dictionary = this.getDictionary(dicIndex);
         Entries entries;
 
-
         Pair<SelectedWord, Entries> cacheHit = matchesCaches.get(dicIndex);
         if (cacheHit != null && cacheHit.first.equals(word)) {
             return cacheHit.second;
@@ -408,6 +412,33 @@ public class DictionaryServiceImpl implements DictionaryService {
         }
 
         matchesCaches.put(dicIndex, new Pair<SelectedWord, Entries>(word, entries));
+
+        //get entry 0 if first click. increment if second
+        if (dicIndex==0){
+            System.out.println(lastSearchWord);
+            System.out.println(word.getText().toString());
+            if(lastSearchWord.equals(word.getText().toString())){
+                System.out.println("match");
+                lastAudioIndex++;
+                if (lastAudioIndex == lastAudioTotal){
+                    lastAudioIndex =0;
+                }
+            }else{
+                lastAudioIndex = 0;
+                lastAudioTotal = entries.size();
+                lastSearchWord = word.getText().toString();
+            }
+            String[] splitDefinition  =  entries.get(lastAudioIndex).toString().split(" ", 4);
+            Pair<String, String> audioLookupWords;
+
+            if (splitDefinition[0].equals(splitDefinition[1]) && !splitDefinition[2].contains("(")){
+                audioLookupWords = new Pair<String, String>(splitDefinition[2], splitDefinition[1]);
+            }else{
+                audioLookupWords = new Pair<String, String>(splitDefinition[0], splitDefinition[1]);
+            }
+
+            accentAudio.playAudio(audioLookupWords);
+        }
         return entries;
     }
 
