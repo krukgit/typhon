@@ -57,12 +57,13 @@ On Android, Firefox has an addon, [nazeka](https://github.com/wareya/nazeka), th
 
 huh88s fork
 =================
-This version plays native audio to let you know the pitch accent of the words you look up. It is also useful if you know the word just not how to read it
-as just hearing the word is less effort than reading the definition.
+This version plays native audio to let you know the pitch accent of the words you look up. It is also useful if you already know the word but not how
+to read it, just hearing the word is less effort than having to look down at the definition.
 
-After playing audio for odaka words will play audio of a native speaker saying o for odaka. This is because in isolation odaka and heiban are the same.
+Since you cant tell odaka and heiban apart when the words are pronouonced in isolation, An audiofile will play after odaka words to let you know it was
+odaka. The audiofile is just a native speaker saying o for odaka.
 
-For words that doesnt have a native audio it can also play a sound telling you what pitch it is similiar to the odaka example above.
+For words that doesnt have a native audio it can also play a sound telling you what pitch it is, similiar to the odaka example above.
 
 
 makuto's fork
