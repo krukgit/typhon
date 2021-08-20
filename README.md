@@ -68,6 +68,9 @@ huh88s fork
 This version plays native audio to let you know the pitch accent of the words you look up. It is also useful if you already know the word but not how
 to read it, just hearing the word is less effort than having to look down at the definition.
 
+The audio that plays is the audio for the first result in the Edict dictionary. If you tap the word again it will play audio for the next result.
+Keep tapping the word to cycle through. You must use the Edict dictionary.
+
 Since you cant tell odaka and heiban apart when the words are pronouonced in isolation, An audiofile will play after odaka words to let you know it was
 odaka. The audiofile is just a native speaker saying o for odaka.
 
