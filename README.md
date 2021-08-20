@@ -13,12 +13,33 @@ Note that Typhon does not require Google Play. I tested this to work on Android 
 
 Typhon is licensed under the GPL-V3 license.
 
-- Macoy Madson macoy@macoy.me (this fork's author; contact me first)
+- Macoy Madson macoy@macoy.me (makuto fork's author;)
 - Benjamin Marlé benjamarle@gmail.com (original author; hasn't worked on Typhon in years, unfortunately)
 
-makuto's fork
-=================
-This is a version of Typhon with good E-Ink support, meaning text should be readable in most cases and there shouldn't be any white-on-black text.
+## huh88 Fork, Getting soundfiles
+you need to get the accentAudio folder from the MIA/Migaku japanese anki addon and copy it to the Typhon folder on your android device.
+If you connect your phone via cable to your pc and just drag the files over its literally gonna take days. I would reccomend using
+ADB push. In windows, just open cmd and navigate to the folder containing the accentAudio folder. Then do:
+
+adb push accentAudio /sdcard/Typhon
+
+make sure your pc doesnt go to sleep during the transfer. Maybe go into windows power and sleep settings and set sleep to never
+if you are gonna leave your pc during the transfer.
+
+You also need to get the json file fullAccDict_.json and drag it into the typhon folder.
+
+If you want pitch accent information for words that dont have native audio then drag the soundfiles \_a.mp3 \_h.mp3 \_o.mp3 \_n.mp3
+into the accentAudio folder. \_h.mp3 is a native speaker saying  へ meaning the word is  へいばん. For odaka words with native audio
+\_o.mp3 will play after the word is pronounced letting you know it is odaka and not heiban.
+
+
+## Warning!
+
+There is a bug in this fork, makuto's fork and dajimenezja's fork, where if you leave the library page and then come back, for example after
+reading something, then the app will crash when you scroll. Books will also disappear from your library, and redoing the import of those books
+will not make them show up. I reccomend only keeping the books you are currently reading in your library. That way there probably isnt enough
+books to make scrolling possible.
+
 
 ## Definition Tips
 
@@ -33,7 +54,22 @@ Typhon should make reading EPUB files with Japanese text for Japanese learners a
 If you want this functionality on your desktop, use Rikaichamp or other Rikai* plugins for your browser of choice.
 On Android, Firefox has an addon, [nazeka](https://github.com/wareya/nazeka), that works with touchscreens.
 
-## My modifications
+
+huh88s fork
+=================
+This version plays native audio to let you know the pitch accent of the words you look up. It is also useful if you already know the word but not how
+to read it, just hearing the word is less effort than having to look down at the definition.
+
+Since you cant tell odaka and heiban apart when the words are pronouonced in isolation, An audiofile will play after odaka words to let you know it was
+odaka. The audiofile is just a native speaker saying o for odaka.
+
+For words that doesnt have a native audio it can also play a sound telling you what pitch it is, similiar to the odaka example above.
+
+
+makuto's fork
+=================
+This is a version of Typhon with good E-Ink support, meaning text should be readable in most cases and there shouldn't be any white-on-black text.
+
 This fork uses the below [dajimenezja fork](https://github.com/dajimenezja/typhon) for its modern Android version and inclusion of JRikai.jar by default.
 
 I then made modifications to make Typhon suitable for e-Ink / e-Paper displays. In my case, it's for an Onyx Boox Nova 2.
