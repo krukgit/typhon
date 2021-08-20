@@ -23,7 +23,7 @@ ADB push. In windows, just open cmd and navigate to the folder containing the ac
 
 adb push accentAudio /sdcard/Typhon
 
-make sure your pc doesnt go to sleep during the transfer. Maybe go into windows power and sleep settings and and set sleep to never
+make sure your pc doesnt go to sleep during the transfer. Maybe go into windows power and sleep settings and set sleep to never
 if you are gonna leave your pc during the transfer.
 
 You also need to get the json file fullAccDict_.json and drag it into the typhon folder.
@@ -31,6 +31,14 @@ You also need to get the json file fullAccDict_.json and drag it into the typhon
 If you want pitch accent information for words that dont have native audio then drag the soundfiles \_a.mp3 \_h.mp3 \_o.mp3 \_n.mp3
 into the accentAudio folder. \_h.mp3 is a native speaker saying  へ meaning the word is  へいばん. For odaka words with native audio
 \_o.mp3 will play after the word is pronounced letting you know it is odaka and not heiban.
+
+
+## Warning!
+
+There is a bug in this fork, makuto's fork and dajimenezja's fork, where if you leave the library page and then come back, for example after
+reading something, then the app will crash when you scroll. Books will also disappear from your library, and redoing the import of those books
+will not make them show up. I reccomend only keeping the books you are currently reading in your library. That way there probably isnt enough
+books to make scrolling possible.
 
 
 ## Definition Tips
@@ -46,9 +54,15 @@ Typhon should make reading EPUB files with Japanese text for Japanese learners a
 If you want this functionality on your desktop, use Rikaichamp or other Rikai* plugins for your browser of choice.
 On Android, Firefox has an addon, [nazeka](https://github.com/wareya/nazeka), that works with touchscreens.
 
-huh88's fork
+
+huh88s fork
 =================
-This version plays native audio 
+This version plays native audio to let you know the pitch accent of the words you look up. It is also useful if you know the word just not how to read it
+as just hearing the word is less effort than reading the definition.
+
+After playing audio for odaka words will play audio of a native speaker saying o for odaka. This is because in isolation odaka and heiban are the same.
+
+For words that doesnt have a native audio it can also play a sound telling you what pitch it is similiar to the odaka example above.
 
 
 makuto's fork
