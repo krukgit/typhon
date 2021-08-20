@@ -13,12 +13,25 @@ Note that Typhon does not require Google Play. I tested this to work on Android 
 
 Typhon is licensed under the GPL-V3 license.
 
-- Macoy Madson macoy@macoy.me (this fork's author; contact me first)
+- Macoy Madson macoy@macoy.me (makuto fork's author;)
 - Benjamin Marlé benjamarle@gmail.com (original author; hasn't worked on Typhon in years, unfortunately)
 
-makuto's fork
-=================
-This is a version of Typhon with good E-Ink support, meaning text should be readable in most cases and there shouldn't be any white-on-black text.
+## huh88 Fork, Getting soundfiles
+you need to get the accentAudio folder from the MIA/Migaku japanese anki addon and copy it to the Typhon folder on your android device.
+If you connect your phone via cable to your pc and just drag the files over its literally gonna take days. I would reccomend using
+ADB push. In windows, just open cmd and navigate to the folder containing the accentAudio folder. Then do:
+
+adb push accentAudio /sdcard/Typhon
+
+make sure your pc doesnt go to sleep during the transfer. Maybe go into windows power and sleep settings and and set sleep to never
+if you are gonna leave your pc during the transfer.
+
+You also need to get the json file fullAccDict_.json and drag it into the typhon folder.
+
+If you want pitch accent information for words that dont have native audio then drag the soundfiles \_a.mp3 \_h.mp3 \_o.mp3 \_n.mp3
+into the accentAudio folder. \_h.mp3 is a native speaker saying  へ meaning the word is  へいばん. For odaka words with native audio
+\_o.mp3 will play after the word is pronounced letting you know it is odaka and not heiban.
+
 
 ## Definition Tips
 
@@ -33,7 +46,15 @@ Typhon should make reading EPUB files with Japanese text for Japanese learners a
 If you want this functionality on your desktop, use Rikaichamp or other Rikai* plugins for your browser of choice.
 On Android, Firefox has an addon, [nazeka](https://github.com/wareya/nazeka), that works with touchscreens.
 
-## My modifications
+huh88's fork
+=================
+This version plays native audio 
+
+
+makuto's fork
+=================
+This is a version of Typhon with good E-Ink support, meaning text should be readable in most cases and there shouldn't be any white-on-black text.
+
 This fork uses the below [dajimenezja fork](https://github.com/dajimenezja/typhon) for its modern Android version and inclusion of JRikai.jar by default.
 
 I then made modifications to make Typhon suitable for e-Ink / e-Paper displays. In my case, it's for an Onyx Boox Nova 2.
