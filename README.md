@@ -17,18 +17,26 @@ Typhon is licensed under the GPL-V3 license.
 - Benjamin Marlé benjamarle@gmail.com (original author; hasn't worked on Typhon in years, unfortunately)
 
 ## huh88 Fork, Getting soundfiles
-you need to get the accentAudio folder from the MIA/Migaku japanese anki addon and copy it to the Typhon folder on your android device.
-If you connect your phone via cable to your pc and just drag the files over its literally gonna take days. I would reccomend using
-ADB push. In windows, just open cmd and navigate to the folder containing the accentAudio folder. Then do:
+
+After installing the app, to get the audio working you need to get 2 things:
+
+You need to get the accentAudio folder from the MIA/Migaku japanese anki addon and copy it to the
+Typhon folder on your android device.
+
+You also need to get the json file in the ExtraJsonAndMp3 folder that is here in this repository:
+https://downgit.github.io/#/home?url=https://github.com/huh88/typhon/tree/master/ExtraJsonAndMp3
+The json file also goes in the Typhon folder on your android device.
+
+When moving the accentAudio to the Typhon folder, if you just connect your phone via cable to your pc drag the files over its
+literally gonna take days. I would reccomend using ADB push. In windows, just open cmd and navigate to the folder containing the
+accentAudio folder. Then run this command:
 
 adb push accentAudio /sdcard/Typhon
 
 make sure your pc doesnt go to sleep during the transfer. Maybe go into windows power and sleep settings and set sleep to never
 if you are gonna leave your pc during the transfer.
 
-You also need to get the json file fullAccDict_.json and drag it into the typhon folder.
-
-If you want pitch accent information for words that dont have native audio then drag the soundfiles \_a.mp3 \_h.mp3 \_o.mp3 \_n.mp3
+If you want pitch accent information for words that doesnt have native audio then drag the soundfiles \_a.mp3 \_h.mp3 \_o.mp3 \_n.mp3
 into the accentAudio folder. \_h.mp3 is a native speaker saying  へ meaning the word is  へいばん. For odaka words with native audio
 \_o.mp3 will play after the word is pronounced letting you know it is odaka and not heiban.
 
