@@ -27,9 +27,9 @@ You also need to get the json file in the ExtraJsonAndMp3 folder that is here in
 https://downgit.github.io/#/home?url=https://github.com/huh88/typhon/tree/master/ExtraJsonAndMp3
 The json file also goes in the Typhon folder on your android device.
 
-When moving the accentAudio to the Typhon folder, if you just connect your phone via cable to your pc drag the files over its
-literally gonna take days. I would reccomend using ADB push. In windows, just open cmd and navigate to the folder containing the
-accentAudio folder. Then run this command:
+When moving the accentAudio to the Typhon folder, if you just connect your phone via cable to your pc and drag the files over its
+literally gonna take days. I would reccomend using ADB push. In windows, when have set up adb and have your android connected, 
+navigate to the folder containing the accentAudio folder in cmd. Then run this command:
 
 adb push accentAudio /sdcard/Typhon
 
