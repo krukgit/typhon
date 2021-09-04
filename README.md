@@ -41,14 +41,6 @@ into the accentAudio folder. \_h.mp3 is a native speaker saying  へ meaning the
 \_o.mp3 will play after the word is pronounced letting you know it is odaka and not heiban.
 
 
-## Warning!
-
-There is a bug in this fork, makuto's fork and dajimenezja's fork, where if you leave the library page and then come back, for example after
-reading something, then the app will crash when you scroll. Books will also disappear from your library, and redoing the import of those books
-will not make them show up. I reccomend only keeping the books you are currently reading in your library. That way there probably isnt enough
-books to make scrolling possible.
-
-
 ## Definition Tips
 
 Typhon should make reading EPUB files with Japanese text for Japanese learners a breeze. Simply click on a word to see its definition.
