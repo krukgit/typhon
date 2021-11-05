@@ -48,6 +48,7 @@ public class AccentAudio {
         private HashMap<String, HashMap<String, DictionaryEntry>> doubleMap;
 
         public DictionaryEntry getDictionaryEntry(Pair<String, String> words){
+            if (words.first.equals("No")) { return null; }
 
             System.out.println(words);
             Map<String, DictionaryEntry> secondLvl = doubleMap.get(words.first);

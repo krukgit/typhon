@@ -254,6 +254,14 @@
             android:title="@string/pref_strip_whitespace" />
 
         <com.hlidskialf.android.preference.SeekBarPreference
+            android:defaultValue="7"
+            android:dialogTitle="Empty space for dictionary"
+            android:key="dict_space"
+            android:max="15"
+            android:summary="Prevent text from being hidden behind dictionary"
+            android:title="Empty space for dictionary" />
+
+        <com.hlidskialf.android.preference.SeekBarPreference
             android:defaultValue="30"
             android:dialogTitle="@string/pref_itext_size"
             android:key="itext_size"

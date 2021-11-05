@@ -133,6 +133,7 @@ public class BookView extends ScrollView implements TextSelectionActions.Selecte
 	private int horizontalMargin = 0;
 	private int verticalMargin = 0;
 	private int lineSpacing = 0;
+	private int dictSpace = 0;
 
 	private int highlightColor;
 
@@ -161,6 +162,7 @@ public class BookView extends ScrollView implements TextSelectionActions.Selecte
 	public BookView(Context context, AttributeSet attributes) {
 		super(context, attributes);
 		this.scrollHandler = new Handler();
+
 		Typhon.getComponent().inject(this);
 	}
 
@@ -394,8 +396,18 @@ public class BookView extends ScrollView implements TextSelectionActions.Selecte
 		}
 	}
 
+	public void setDictSpace(int dictSpace){
+		if (dictSpace != this.dictSpace) {
+			this.dictSpace = dictSpace;
+		}
+	}
+
 	public int getVerticalMargin() {
 		return verticalMargin;
+	}
+
+	public int getDictSpace(){
+    	return dictSpace;
 	}
 
 	public int getSelectionStart() {

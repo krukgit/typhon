@@ -1198,6 +1198,7 @@ public class ReadingFragment extends Fragment implements
 
         int marginH = config.getHorizontalMargin();
         int marginV = config.getVerticalMargin();
+        int dictSpace = config.getBottomEmptySpace();
 
         this.textLoader.setFontFamily(config.getDefaultFontFamily());
         this.bookView.setFontFamily(config.getDefaultFontFamily());
@@ -1206,6 +1207,7 @@ public class ReadingFragment extends Fragment implements
 
         bookView.setHorizontalMargin(marginH);
         bookView.setVerticalMargin(marginV);
+        bookView.setDictSpace(dictSpace);
 
         if (!isAnimating()) {
             bookView.setEnableScrolling(config.isScrollingEnabled());
@@ -2645,24 +2647,34 @@ public class ReadingFragment extends Fragment implements
 
     @Override
     public boolean onSwipeDown() {
+        this.restartActivity();
+        return true;
 
-        if (config.isVerticalSwipeEnabled()) {
-            pageDown(Orientation.VERTICAL);
-            return true;
-        }
-
-        return false;
+//        if (config.isVerticalSwipeEnabled()) {
+//            pageDown(Orientation.VERTICAL);
+//            return true;
+//        }
+//
+//        return false;
     }
 
     @Override
     public boolean onSwipeUp() {
-
-        if (config.isVerticalSwipeEnabled()) {
-            pageUp(Orientation.VERTICAL);
-            return true;
+        Intent newIntent = new Intent(context, LibraryActivity.class);
+        startActivity(newIntent);
+        Activity activity = getActivity();
+        if (activity != null) {
+            activity.finish();
         }
+        return true;
 
-        return false;
+
+//        if (config.isVerticalSwipeEnabled()) {
+//            pageUp(Orientation.VERTICAL);
+//            return true;
+//        }
+//
+//        return false;
     }
 
     @Override

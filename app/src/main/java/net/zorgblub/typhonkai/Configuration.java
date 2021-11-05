@@ -581,7 +581,8 @@ public class Configuration {
     }
 
     public boolean isScrollingEnabled() {
-        return isRikaiEnabled() || settings.getBoolean(KEY_SCROLLING, false);
+        return false;
+        //return isRikaiEnabled() || settings.getBoolean(KEY_SCROLLING, false);
     }
 
     public String getLastReadTitle() {
@@ -602,6 +603,10 @@ public class Configuration {
 
     public String getDeviceName() {
         return settings.getString(KEY_DEVICE_NAME, Build.MODEL);
+    }
+
+    public int getBottomEmptySpace() {
+        return settings.getInt("dict_space", 7);
     }
 
     public int getTextSize() {

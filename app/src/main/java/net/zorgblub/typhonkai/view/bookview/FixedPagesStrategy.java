@@ -25,7 +25,10 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.view.ViewParent;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import net.zorgblub.typhonkai.Configuration;
 import net.zorgblub.typhonkai.dto.HighLight;
@@ -151,7 +154,9 @@ public class FixedPagesStrategy implements PageChangeStrategy {
 		int pageHeight = bookView.getMeasuredHeight() - bookView.getVerticalMargin();
 
 		if ( includePageNumbers ) {
-			String bottomSpace = "0\n";
+			String dictBottomSpace = new String(new char[bookView.getDictSpace()]).replace("\0", "\n");
+			//String bottomSpace = "0\n\n\n\n\n\n\n";
+			String bottomSpace = "0" + dictBottomSpace;
 		
 			StaticLayout numLayout = layoutFactory.create(bottomSpace, textPaint, boundedWidth , bookView.getLineSpacing());
 			numLayout.draw(new Canvas());
