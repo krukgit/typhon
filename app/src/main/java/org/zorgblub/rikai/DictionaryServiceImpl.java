@@ -2,6 +2,7 @@ package org.zorgblub.rikai;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.text.Spannable;
 import android.util.Log;
 import android.util.Pair;
 import android.util.SparseArray;
@@ -29,6 +30,7 @@ import org.rikai.dictionary.DictionaryNotLoadedException;
 import org.rikai.dictionary.Entries;
 import org.rikai.dictionary.db.DatabaseException;
 import org.rikai.dictionary.edict.EdictEntry;
+import org.rikai.dictionary.epwing.EpwingEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zorgblub.anki.AnkiDroidConfig;
@@ -449,9 +451,6 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     @Override
     public boolean saveInAnki(AbstractEntry abstractEntry, Context context, SelectedWord selectedWord, String bookTitle) {
-        // Currently working only for edict
-        if (!(abstractEntry instanceof EdictEntry))
-            return false;
 
         if (!AnkiDroidHelper.isApiAvailable(context)) {
             // AnkiDroid not installed
@@ -459,7 +458,6 @@ public class DictionaryServiceImpl implements DictionaryService {
             return false;
         }
 
-        EdictEntry entry = (EdictEntry) abstractEntry;
 
         try {
             // Get api instance
@@ -491,20 +489,28 @@ public class DictionaryServiceImpl implements DictionaryService {
 
 
             String sentence = selectedWord.getContextSentence().toString();
-            String originalWord = entry.getOriginalWord();
+            String originalWord;
+
+            if (!(abstractEntry instanceof EdictEntry)) {
+                DroidEpwingEntry entry = (DroidEpwingEntry) abstractEntry;
+                originalWord = entry.getOriginalWord();
+            }else{
+                EdictEntry entry = (EdictEntry) abstractEntry;
+                originalWord = entry.getOriginalWord();
+            }
 
             sentence = sentence.replace(originalWord, "<span class=\"emph\">" + originalWord + "</span>");
 
-            String[] flds = {originalWord, entry.getReading(), entry.getGloss(), sentence, entry.getReason(), entry.getWord()};
-
+            //String[] flds = {originalWord, entry.getReading(), entry.getGloss(), sentence, entry.getReason(), entry.getWord()};
+            String[] flds = {originalWord, abstractEntry.toStringCompact().trim(), sentence, ""};
 
             // Add a new note using the current field map
 
             // Only add item if there aren't any duplicates
 
             Set<String> tags = new HashSet<>();
-            tags.add(AnkiDroidConfig.TAGS);
-            tags.add(bookTitle.replaceAll("[^A-Za-z0-9]", "_"));
+            //tags.add(AnkiDroidConfig.TAGS);
+            //tags.add(bookTitle.replaceAll("[^A-Za-z0-9]", "_"));
             Long noteUri = api.addNote(mid, did, flds, tags);
             if (noteUri != null) {
                 fireOnMessage(R.string.anki_card_added, flds[0]);
