@@ -415,8 +415,10 @@ public class DictionaryServiceImpl implements DictionaryService {
 
         matchesCaches.put(dicIndex, new Pair<SelectedWord, Entries>(word, entries));
 
+
         //get entry 0 if first click. increment if second
-        if (dicIndex==0){
+        if (dicIndex==currentDictionary){
+            System.out.println(currentDictionary);
             System.out.println(lastSearchWord);
             System.out.println(word.getText().toString());
             if(lastSearchWord.equals(word.getText().toString())){
@@ -430,16 +432,27 @@ public class DictionaryServiceImpl implements DictionaryService {
                 lastAudioTotal = entries.size();
                 lastSearchWord = word.getText().toString();
             }
-            String[] splitDefinition  =  entries.get(lastAudioIndex).toString().split(" ", 4);
-            Pair<String, String> audioLookupWords;
 
-            if (splitDefinition[0].equals(splitDefinition[1]) && !splitDefinition[2].contains("(")){
-                audioLookupWords = new Pair<String, String>(splitDefinition[2], splitDefinition[1]);
+            Pair<String, String> audioLookupWords; //世界 ,せかい
+            AbstractEntry currentEntry = (AbstractEntry) entries.get(lastAudioIndex);
+
+            if (currentEntry instanceof EdictEntry) {
+                String[] splitDefinition  =  currentEntry.toString().split(" ", 4);
+                if (splitDefinition[0].equals(splitDefinition[1]) && !splitDefinition[2].contains("(")){
+                    audioLookupWords = new Pair<String, String>(splitDefinition[2], splitDefinition[1]);
+                }else{
+                    audioLookupWords = new Pair<String, String>(splitDefinition[0], splitDefinition[1]);
+                }
+                accentAudio.playAudio(audioLookupWords);
             }else{
-                audioLookupWords = new Pair<String, String>(splitDefinition[0], splitDefinition[1]);
+                String[] lineSplitDefinition = currentEntry.toStringCompact().split("】", 2);
+                if (lineSplitDefinition.length >0){
+                    String[] splitDefinition = lineSplitDefinition[0].split("【", 2);
+                    audioLookupWords = new Pair<String, String>(splitDefinition[1],splitDefinition[0].replace("‐", ""));
+                    accentAudio.playAudio(audioLookupWords);
+                }
             }
 
-            accentAudio.playAudio(audioLookupWords);
         }
         return entries;
     }
