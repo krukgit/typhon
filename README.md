@@ -94,7 +94,6 @@ dajimenezja's modifications:
 
 Building Typhon
 =================
-*The following may be out of date.* I personally just opened up the project in Android Studio and let it work its magic.
 
 ## Install Java
 *   On Ubuntu
@@ -111,33 +110,28 @@ Typhon改 was created and tested with Android Studio 4.0
 
 1.   Download at http://developer.android.com/sdk/index.html
 2.   Unzip
-3.   Update 
+3.   On Ubuntu install lib32z2
 
-        sdk/tools/android update sdk --no-ui
-4. On Ubuntu install ia32-libs
-
-        apt-get install ia32-libs
-5. Add sdk/tools/ and sdk/platform-tools to your PATH
+  ```
+  sudo apt-get install lib32z1
+  ```
+4. Open the project in Android Studio (do not let it upgrade the Gradle plugin). This will automatically setup the SDK environment.
 
 ## Install USB drivers for your device
 
+*   Install adb
+
+    ```
+    sudo apt-get install adb
+    ````
+
 *   Make sure adb devices shows your device, for example
 
-        $ adb devices
-        List of devices attached 
-        015d18ad5c14000c        device
-
-## Example PATH setup in .bashrc
-
-    export ANDROID_HOME=$HOME/projects/adt-bundle-linux/sdk/
-    if [ $(uname -m) == 'x86_64' ]; then
-        export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre
-    else
-        export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386/jre
-    fi
-
-    PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
+    ```
+    $ adb devices
+    List of devices attached 
+    015d18ad5c14000c        device
+    ```
 
 ## Gradle
 
@@ -146,10 +140,15 @@ The preferred way is to run the Gradle wrapper. This will automatically download
 
 Run the Gradle wrapper by running
 
-    gradlew
+```
+chmod a+x gradlew
+./gradlew
+```
 
 ## Build Typhon
 Once everything is in place you can build Typhon and install it on your device with 
 
-    gradlew build
-    gradlew installDebug
+```
+./gradlew build
+./gradlew installDebug
+```
