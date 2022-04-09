@@ -438,18 +438,22 @@ public class DictionaryServiceImpl implements DictionaryService {
 
             if (currentEntry instanceof EdictEntry) {
                 String[] splitDefinition  =  currentEntry.toString().split(" ", 4);
-                if (splitDefinition[0].equals(splitDefinition[1]) && !splitDefinition[2].contains("(")){
-                    audioLookupWords = new Pair<String, String>(splitDefinition[2], splitDefinition[1]);
-                }else{
-                    audioLookupWords = new Pair<String, String>(splitDefinition[0], splitDefinition[1]);
+                if (splitDefinition.length > 2) {
+                    if (splitDefinition[0].equals(splitDefinition[1]) && !splitDefinition[2].contains("(")) {
+                        audioLookupWords = new Pair<String, String>(splitDefinition[2], splitDefinition[1]);
+                    } else {
+                        audioLookupWords = new Pair<String, String>(splitDefinition[0], splitDefinition[1]);
+                    }
+                    accentAudio.playAudio(audioLookupWords);
                 }
-                accentAudio.playAudio(audioLookupWords);
             }else{
                 String[] lineSplitDefinition = currentEntry.toStringCompact().split("】", 2);
-                if (lineSplitDefinition.length >0){
+                if (lineSplitDefinition.length > 0){
                     String[] splitDefinition = lineSplitDefinition[0].split("【", 2);
-                    audioLookupWords = new Pair<String, String>(splitDefinition[1],splitDefinition[0].replace("‐", ""));
-                    accentAudio.playAudio(audioLookupWords);
+                    if (splitDefinition.length > 1) {
+                        audioLookupWords = new Pair<String, String>(splitDefinition[1], splitDefinition[0].replace("‐", ""));
+                        accentAudio.playAudio(audioLookupWords);
+                    }
                 }
             }
 
